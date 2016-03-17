@@ -5,9 +5,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import krabiv.ro.ua.kordonq.lodainfo.FetchDataTask;
 
 public class KordonActivity extends AppCompatActivity {
 
@@ -48,5 +51,12 @@ public class KordonActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        TextView lastUpd = (TextView) findViewById(R.id.lastUpd);
+        new FetchDataTask(lastUpd).execute();
     }
 }
