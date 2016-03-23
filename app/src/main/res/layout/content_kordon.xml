@@ -21,8 +21,78 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0.0.0000"
-        android:layout_alignTop="@+id/lastUpdLabel"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/lastUpd"/>
+        android:text="@string/NA"
+        android:id="@+id/lastUpd"
+        android:layout_above="@+id/rrh"
+        android:layout_alignStart="@+id/rrhQ"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Рава-Руська - Хребенне"
+        android:id="@+id/rrh"
+        android:layout_marginTop="43dp"
+        android:layout_below="@+id/lastUpdLabel"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NA"
+        android:id="@+id/rrhQ"
+        android:layout_above="@+id/gb"
+        android:layout_toEndOf="@+id/kk"
+        android:layout_marginStart="71dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Грушів - Будомеж"
+        android:id="@+id/gb"
+        android:layout_marginTop="74dp"
+        android:layout_below="@+id/rrh"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NA"
+        android:id="@+id/gbQ"
+        android:layout_above="@+id/kk"
+        android:layout_alignStart="@+id/rrhQ"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Краковець - Корчова"
+        android:id="@+id/kk"
+        android:layout_marginTop="81dp"
+        android:layout_below="@+id/gb"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NA"
+        android:id="@+id/kkQ"
+        android:layout_alignTop="@+id/kk"
+        android:layout_alignStart="@+id/gbQ"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Шегині - Mедика"
+        android:id="@+id/shm"
+        android:layout_below="@+id/kk"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="102dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NA"
+        android:id="@+id/shmQ"
+        android:layout_alignTop="@+id/shm"
+        android:layout_alignStart="@+id/kkQ"/>
+
 </RelativeLayout>

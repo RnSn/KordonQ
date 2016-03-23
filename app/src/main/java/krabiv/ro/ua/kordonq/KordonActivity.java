@@ -10,7 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
+import krabiv.ro.ua.kordonq.lodainfo.AfterRequest;
 import krabiv.ro.ua.kordonq.lodainfo.FetchDataTask;
+import krabiv.ro.ua.kordonq.lodainfo.Q;
 
 public class KordonActivity extends AppCompatActivity {
 
@@ -56,7 +60,13 @@ public class KordonActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        TextView lastUpd = (TextView) findViewById(R.id.lastUpd);
-        new FetchDataTask(lastUpd).execute();
+        new FetchDataTask(new AfterRequest() {
+            @Override
+            public void call(List<Q> queues) {
+                for (Q q : queues) {
+                    ((TextView) findViewById(q.getViewId())).setText(q.getQSize());
+                }
+            }
+        }).execute();
     }
 }

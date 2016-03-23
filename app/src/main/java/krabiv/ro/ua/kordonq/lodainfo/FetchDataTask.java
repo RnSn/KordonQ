@@ -5,31 +5,48 @@ import android.util.Log;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-public class FetchDataTask extends AsyncTask<Void, Integer, String> {
+import krabiv.ro.ua.kordonq.R;
 
+public class FetchDataTask extends AsyncTask<Void, Integer, List<Q>> {
 
-    TextView tw;
+    private TextView tw;
+    private AfterRequest ar;
 
     public FetchDataTask(TextView tw) {
         this.tw = tw;
     }
 
+    public FetchDataTask(AfterRequest ar) {
+        this.ar = ar;
+    }
+
     @Override
-    protected String doInBackground(final Void... params) {
+    protected List<Q> doInBackground(final Void... params) {
+        List<Q> result = new ArrayList<>();
         try {
-            Q q = new Q();
-            return q.lastUpdate();
-        } catch (URISyntaxException | IOException e) {
+            Request req = new Request();
+            LinkedHashMap<String, List<String>> queues = req.queues();
+            result.add(new Q(R.id.rrhQ, queues.get("Рава-Руська - Хребенне")
+                .get(0)));
+            result.add(new Q(R.id.gbQ, queues.get("Грушів - Будомеж")
+                .get(0)));
+            result.add(new Q(R.id.kkQ, queues.get("Краковець - Корчова")
+                .get(0)));
+            result.add(new Q(R.id.shmQ, queues.get("Шегині - медика")
+                .get(0)));
+        } catch (IOException e) {
             Log.e(Const.KORDON_Q, e.getMessage());
-            return Q.DATE_UNKNOWN;
         }
+        return result;
     }
 
 
     @Override
-    protected void onPostExecute(final String result) {
-        tw.setText(result);
+    protected void onPostExecute(final List<Q> result) {
+        ar.call(result);
     }
 }
